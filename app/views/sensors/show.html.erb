@@ -1,0 +1,86 @@
+<div class="row">
+  <div class="col-md-1">
+    <%= button_to 'Edit', edit_sensor_path, :method => :get, class: 'btn btn-primary' %>
+  </div>
+  <div class="col-md-11">
+    <%= button_to 'View Logs', sensor_sensor_logs_path(@sensor), :method => :get, class: 'btn btn-primary' %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+
+    <h3>Sensor detail</h3>
+
+    <table class="table table-bordered">
+      <tbody>
+        <tr>
+          <td><label>Sensor ID</label></td>
+          <td><%= @sensor.id %></td>
+        </tr>
+        <tr>
+          <td><label>Sensor Name</label></td>
+          <td><%= @sensor.name %></td>
+        </tr>
+        <tr>
+          <td><label>Description</label></td>
+          <td><%= @sensor.description %></td>
+        </tr>
+        <tr>
+          <td><label>API Key</label></td>
+          <td><%= @sensor.api_key %></td>
+        </tr>
+        <tr>
+          <td><label>Created</label></td>
+          <td><%= @sensor.created_at %></td>
+        </tr>
+        <tr>
+          <td><label>Updated</label></td>
+          <td><%= @sensor.updated_at %></td>
+        </tr>
+        <tr>
+          <td><label>v1 Name</label></td>
+          <td><%= @sensor.v1_name %></td>
+        </tr>
+        <tr>
+          <td><label>v1 Unit</label></td>
+          <td><%= @sensor.v1_unit %></td>
+        </tr>
+        <tr>
+          <td><label>v2 Name</label></td>
+          <td><%= @sensor.v2_name %></td>
+        </tr>
+        <tr>
+          <td><label>v2 Unit</label></td>
+          <td><%= @sensor.v2_unit %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-md-6">
+
+    <h3>Data log (Last 10)</h3>
+
+    <table class="table table-hover table-striped table-bordered">
+      <thead>
+        <tr class="bg-primary">
+          <th>#</th>
+          <th><%= if @sensor.v1_name.present? then @sensor.v1_name else 'N/A' end %> (<%= if @sensor.v1_unit.present? then @sensor.v1_unit else '*' end %>)</th>
+          <th><%= if @sensor.v2_name.present? then @sensor.v2_name else 'N/A' end %> (<%= if @sensor.v2_unit.present? then @sensor.v2_unit else '*' end %>)</th>
+          <th>Created</th>
+        </tr>
+      </thead>
+      <tbody>
+    <% @sensor.sensor_logs.order('id DESC').limit(10).each_with_index do |row, idx| %>
+        <tr>
+          <td><%= idx + 1 %></td>
+          <td><%= row.v1 %></td>
+          <td><%= row.v2 %></td>
+          <td><%= row.created_at %></td>
+        </tr>
+    <% end %>
+      </tbody>
+    </table>
+
+  </div>
+</div>
