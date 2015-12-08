@@ -2,8 +2,11 @@
   <div class="col-md-1">
     <%= button_to 'Edit', edit_sensor_path, :method => :get, class: 'btn btn-primary' %>
   </div>
-  <div class="col-md-11">
+  <div class="col-md-1">
     <%= button_to 'View Logs', sensor_sensor_logs_path(@sensor), :method => :get, class: 'btn btn-primary' %>
+  </div>
+  <div class="col-md-1">
+    <%= button_to 'Connect Sensor', sensor_sensor_logs_path(@sensor), :method => :get, class: 'btn btn-primary' %>
   </div>
 </div>
 

@@ -47,6 +47,8 @@ group :development do
   gem 'capistrano-rails'
   gem 'capistrano-rvm'
   gem 'capistrano-unicorn-nginx'
+  gem 'rb-fsevent'
+  gem 'guard'
 end
 
 group :development, :test do
