@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   get 'tarning/index'
 
   devise_for :users, controllers: {sessions: "users/sessions" , registrations: "users/registrations"}
+  authenticate :admin do
+    mount Resque::Server, :at => "/resque"
+  end
   resources :homes
   resources :person_infos
   resources :machine_lists

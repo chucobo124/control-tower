@@ -1,7 +1,7 @@
 class WifiConnectionJob < ActiveJob::Base
-  queue_as :default
+  @queue = :wifi_connection
 
-  def perform(*args)
+  def self.perform(*args)
     # Do something later
   end
 end

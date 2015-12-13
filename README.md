@@ -15,6 +15,10 @@ https://www.facebook.com/events/923409224355993/947212765308972/
 -Bundler version 1.9.6<br/>
 <blockquote>使用資料庫：<br/></blockquote>
 -PostgreSQL(9.4.1)<br/>
+-Redis(start up Redis)
+```
+redis-server /usr/local/etc/redis.conf
+```
 <blockquote>正式區機器：<br/></blockquote>
 -Linux /Ubuntu 14.10LST<br/>
 <blockquote>可執行的環境：<br/></blockquote>

@@ -29,7 +29,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'serialport'
 gem 'cancan'
-
+gem 'resque', :require => "resque/server"
 # 分頁
 gem 'kaminari'
 
