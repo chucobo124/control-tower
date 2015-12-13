@@ -4,9 +4,10 @@ Rails.application.routes.draw do
   get 'tarning/index'
 
   devise_for :users, controllers: {sessions: "users/sessions" , registrations: "users/registrations"}
-  authenticate :admin do
+  authenticate :user do
     mount Resque::Server, :at => "/resque"
   end
+
   resources :homes
   resources :person_infos
   resources :machine_lists
@@ -19,7 +20,6 @@ Rails.application.routes.draw do
 
   # 接收資料用
   match 'sendlog', :to => 'sensor_logs#create', :via => [:get, :post]
-
   root to: "homes#index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
